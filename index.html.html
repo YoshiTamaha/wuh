@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Micha!</title>
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  color: #ff0909;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+#myVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the whole screen */
+  z-index: -1;
+}
+#present {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: rgba(233, 226, 197, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+#present img {
+  width: 150px;
+  height: 150px;
+}
+#content {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1;
+  margin-top: 20px;
+}
+h1 {
+  font-size: 6rem;
+  text-shadow: 0 0 10px rgb(129, 16, 223), 0 0 20px rgb(10, 85, 224), 0 0 30px rgb(131, 61, 131);
+  margin-bottom: 20px;
+}
+.message {
+  font-size: 2.5rem;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  word-wrap: break-word;
+}
+#audioControl {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) and (orientation: portrait) {
+  h1 {
+    font-size: 4rem;
+  }
+  .message {
+    font-size: 1.5rem;
+  }
+  #present img {
+    width: 100px;
+    height: 100px;
+  }
+  #audioControl {
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+  }
+  #myVideo {
+    width: 100%;
+    height: 100%; /* Ensure video fills screen height */
+  }
+  body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) and (orientation: portrait) {
+  h1 {
+    font-size: 3rem;
+  }
+  .message {
+    font-size: 1.2rem;
+  }
+  #present img {
+    width: 80px;
+    height: 80px;
+  }
+  #myVideo {
+    width: 100%;
+    height: 100%; /* Ensure video fills screen height */
+  }
+  body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+}
+</style>
+</head>
+<body>
+<!-- Video Background -->
+<video autoplay muted loop id="myVideo">
+  <source src="Novo Amor - Anchor (official video).mp4" type="video/mp4">
+</video>
+
+<!-- Present Cover -->
+<div id="present">
+  <h1>Click me!</h1>
+  <img src="Ramito de flores para tiii🌷🌷🌷.jpg" alt="Present">
+</div>
+
+<!-- Content (Hidden Initially) -->
+<div id="content">
+  <h1>Belated Happy birthday tol!</h1>
+  <div class="message" id="message"></div>
+</div>
+
+<!-- Audio Control -->
+<div id="audioControl" onclick="toggleAudio()">
+  <span id="audioText">🔊 Music: On</span>
+</div>
+
+<audio id="birthdayAudio" loop>
+  <source src="Novo Amor - Anchor (official video).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Present Click Event
+const present = document.getElementById('present');
+const content = document.getElementById('content');
+const messageElement = document.getElementById('message');
+const audioElement = document.getElementById('birthdayAudio');
+const audioText = document.getElementById('audioText');
+
+present.addEventListener('click', () => {
+  // Hide the present
+  present.style.display = 'none';
+  // Show the content
+  content.style.display = 'flex';
+  // Start the birthday chat
+  birthdayChat();
+  // Play the audio automatically
+  audioElement.play();
+  audioText.textContent = "🔊 Music: On";
+});
+
+// Birthday chat prompts
+function birthdayChat() {
+  const messages = [
+    "Hi Micha!",
+    "I created this code for you haha.",
+    "And",
+    "Since you pressed 1",
+    "I Just Wanted to say",
+    "Na",
+    "Im very sorry Micha kung nalimutan ko birthday mo.",
+    "Gagu, kala ko kasi matagal pa",
+    "HAHAHAHA",
+    "Pero",
+    "Eto na gift ko sayo, tinake advantage ko na pagcocode ko para sayo HAHAHAHA.",
+    "Even if it's simple, please appreciate it as my token of acknowledgement kahit hindi ko natandaan birthday mo. Sorry Micha.",
+    "Di pako magaling mag code eh",
+    "Gagaling rin ako, kupal kasi laro inaatupag ko eh",
+    "Anyways, 18 ka na pala noh?",
+    "WOW!",
+    "Tanda mo na HAHAHAHAHA!",
+    "Pero joke lang syempre",
+    "Micha",
+    "Alam mo ba?",
+    "Alam mo ba?",
+    "Ay hindi ba, sorry eto na sasabihin ko na nga",
+    "Micha",
+    "eheheheeh",
+    "Ang ganda mo",
+    "Legit",
+    "Ay eto",
+    "Malapit na valentines oh",
+    "Madami nabang nalapit sayo? HAHAHAHA",
+    "Sagutin mo na kasi",
+    "Joke lang",
+    "Anyways",
+    "Sorry talaga Micha.",
+    "And, I wish na",
+    "This year is also the best year for you",
+    "Na matupad mga wishes mo",
+    "Bilis noh?",
+    "18 kana",
+    "Can I call you ate nalang?",
+    "Quotation: Hi maganda kong ate",
+    "Yun oh!",
+    "I took my time rin pala na gawin to since hindi naman ako busy ngayon eh",
+    "Pano bayan, last part na",
+    "Eto na talaga",
+    "Eto na sasabihin ko na",
+    "Sige naaaaa",
+    "Oo na eto na",
+    "Happy belated birthday Micha."
+  ];
+
+  let index = 0;
+  function showNextMessage() {
+    if (index < messages.length) {
+      messageElement.innerHTML = messages[index];
+      index++;
+      setTimeout(showNextMessage, 5000); // 5 seconds delay
+    }
+  }
+
+  showNextMessage();
+}
+
+// Audio Control
+function toggleAudio() {
+  if (audioElement.paused) {
+    audioElement.play();
+    audioText.textContent = "🔊 Music: On";
+  } else {
+    audioElement.pause();
+    audioText.textContent = "🔇 Music: Off";
+  }
+}
+</script>
+</body>
+</html>
